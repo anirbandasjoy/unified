@@ -42,7 +42,7 @@ function Navbar() {
       <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <div className="flex items-center gap-2">
           <Layers className="size-6 text-primary" />
-          <span className="text-xl font-bold">MonoRepo</span>
+          <span className="text-xl font-bold">Monorepo</span>
         </div>
 
         <div className="hidden items-center gap-6 md:flex">
