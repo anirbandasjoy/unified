@@ -86,8 +86,9 @@ const inputGroupButtonVariants = cva(
 function InputGroupButton({
   className,
   type = "button",
-  variant = "ghost",
+  variant = "default",
   size = "xs",
+  appearance = "ghost",
   ...props
 }: Omit<React.ComponentProps<typeof Button>, "size"> &
   VariantProps<typeof inputGroupButtonVariants>) {
@@ -96,6 +97,7 @@ function InputGroupButton({
       type={type}
       data-size={size}
       variant={variant}
+      appearance={appearance}
       className={cn(inputGroupButtonVariants({ size }), className)}
       {...props}
     />
@@ -117,7 +119,7 @@ function InputGroupText({ className, ...props }: React.ComponentProps<"span">) {
 function InputGroupInput({
   className,
   ...props
-}: React.ComponentProps<"input">) {
+}: Omit<React.ComponentProps<"input">, "size">) {
   return (
     <Input
       data-slot="input-group-control"

@@ -1,19 +1,203 @@
 import * as React from "react"
 
 import { cn } from "@workspace/ui/lib/utils"
+import { cva, type VariantProps } from "class-variance-authority"
 
-function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+const inputVariants = cva(
+  "w-full min-w-0 rounded-md border shadow-none transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        primary: "",
+        secondary: "",
+        success: "",
+        destructive: "",
+        warning: "",
+        default: "",
+        field: "",
+      },
+      appearance: {
+        solid: "",
+        outline: "",
+        inline: "",
+      },
+      size: {
+        xs: "h-8 px-2.5 py-1.5 text-xs",
+        sm: "h-9 px-3 py-1.5 text-sm",
+        md: "h-10 px-3 py-2 text-sm",
+        lg: "h-12 px-3.5 py-2 text-base",
+        xl: "h-14 px-4 py-2 text-base",
+      },
+    },
+    compoundVariants: [
+      // ============ PRIMARY VARIANT ============
+      {
+        variant: "primary",
+        appearance: "solid",
+        className:
+          "border-primary/20 bg-primary/5 text-foreground placeholder:text-primary/60 focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-primary/20 dark:bg-primary/10",
+      },
+      {
+        variant: "primary",
+        appearance: "outline",
+        className:
+          "border-primary/50 bg-background text-foreground placeholder:text-primary/60 focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-primary/20",
+      },
+      {
+        variant: "primary",
+        appearance: "inline",
+        className:
+          "rounded-none border-0 border-b border-primary/30 bg-transparent px-0 text-foreground placeholder:text-primary/60 focus-visible:border-b-2 focus-visible:border-primary focus-visible:ring-0",
+      },
+
+      // ============ SECONDARY VARIANT ============
+      {
+        variant: "secondary",
+        appearance: "solid",
+        className:
+          "border-secondary bg-secondary text-secondary-foreground focus-visible:border-secondary focus-visible:ring-[3px] focus-visible:ring-secondary/20",
+      },
+      {
+        variant: "secondary",
+        appearance: "outline",
+        className:
+          "border-secondary bg-background text-foreground focus-visible:border-secondary focus-visible:ring-[3px] focus-visible:ring-secondary/20",
+      },
+      {
+        variant: "secondary",
+        appearance: "inline",
+        className:
+          "rounded-none border-0 border-b border-secondary/30 bg-transparent px-0 text-foreground focus-visible:border-b-2 focus-visible:border-secondary focus-visible:ring-0",
+      },
+
+      // ============ SUCCESS VARIANT ============
+      {
+        variant: "success",
+        appearance: "solid",
+        className:
+          "bg-success/5 dark:bg-success/10 border-success/20 placeholder:text-success/60 focus-visible:border-success focus-visible:ring-success/20 text-foreground focus-visible:ring-[3px]",
+      },
+      {
+        variant: "success",
+        appearance: "outline",
+        className:
+          "border-success placeholder:text-success/60 focus-visible:border-success focus-visible:ring-success/20 bg-background text-foreground focus-visible:ring-[3px]",
+      },
+      {
+        variant: "success",
+        appearance: "inline",
+        className:
+          "border-success/30 placeholder:text-success/60 focus-visible:border-success rounded-none border-0 border-b bg-transparent px-0 text-foreground focus-visible:border-b-2 focus-visible:ring-0",
+      },
+
+      // ============ DESTRUCTIVE VARIANT ============
+      {
+        variant: "destructive",
+        appearance: "solid",
+        className:
+          "border-destructive/20 bg-destructive/5 text-foreground placeholder:text-destructive/60 focus-visible:border-destructive focus-visible:ring-[3px] focus-visible:ring-destructive/20 dark:bg-destructive/10",
+      },
+      {
+        variant: "destructive",
+        appearance: "outline",
+        className:
+          "border-destructive bg-background text-foreground placeholder:text-destructive/60 focus-visible:border-destructive focus-visible:ring-[3px] focus-visible:ring-destructive/20",
+      },
+      {
+        variant: "destructive",
+        appearance: "inline",
+        className:
+          "rounded-none border-0 border-b border-destructive/30 bg-transparent px-0 text-foreground placeholder:text-destructive/60 focus-visible:border-b-2 focus-visible:border-destructive focus-visible:ring-0",
+      },
+
+      // ============ WARNING VARIANT ============
+      {
+        variant: "warning",
+        appearance: "solid",
+        className:
+          "bg-warning/5 dark:bg-warning/10 border-warning/20 placeholder:text-warning/60 focus-visible:border-warning focus-visible:ring-warning/20 text-foreground focus-visible:ring-[3px]",
+      },
+      {
+        variant: "warning",
+        appearance: "outline",
+        className:
+          "border-warning placeholder:text-warning/60 focus-visible:border-warning focus-visible:ring-warning/20 bg-background text-foreground focus-visible:ring-[3px]",
+      },
+      {
+        variant: "warning",
+        appearance: "inline",
+        className:
+          "border-warning/30 placeholder:text-warning/60 focus-visible:border-warning rounded-none border-0 border-b bg-transparent px-0 text-foreground focus-visible:border-b-2 focus-visible:ring-0",
+      },
+
+      // ============ DEFAULT VARIANT ============
+      {
+        variant: "default",
+        appearance: "solid",
+        className:
+          "border bg-card hover:border-gray-300 dark:hover:border-gray-600",
+      },
+      {
+        variant: "default",
+        appearance: "outline",
+        className:
+          "border-zinc-950/30 bg-background text-foreground focus-visible:border-zinc-950 focus-visible:ring-[3px] focus-visible:ring-zinc-950/20 dark:border-zinc-300/30 dark:focus-visible:border-zinc-300 dark:focus-visible:ring-zinc-300/20",
+      },
+      {
+        variant: "default",
+        appearance: "inline",
+        className:
+          "rounded-none border-0 border-b border-zinc-950/20 bg-transparent px-0 text-foreground focus-visible:border-b-2 focus-visible:border-zinc-950 focus-visible:ring-0 dark:border-zinc-300/20 dark:focus-visible:border-zinc-300",
+      },
+
+      // ============ FIELD VARIANT ============
+      {
+        variant: "field",
+        appearance: "solid",
+        className:
+          "border-field-foreground/20 text-input-foreground placeholder:text-input-foreground/60 focus-visible:border-field-foreground focus-visible:ring-input-foreground/5 rounded-sm bg-input shadow-none focus-visible:bg-background focus-visible:ring-4 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
+      },
+      {
+        variant: "field",
+        appearance: "outline",
+        className: cn(
+          "border-field-foreground/20 text-input-foreground placeholder:text-input-foreground/60 focus-visible:border-field-foreground focus-visible:ring-input-foreground/5 rounded-sm bg-background shadow-none focus-visible:ring-4 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40"
+        ),
+      },
+      {
+        variant: "field",
+        appearance: "inline",
+        className:
+          "border-field-foreground/20 text-input-foreground placeholder:text-input-foreground/60 focus-visible:border-field-foreground rounded-none border-0 border-b bg-transparent px-0 shadow-none focus-visible:border-b-2 focus-visible:ring-0 aria-invalid:border-destructive",
+      },
+    ],
+    defaultVariants: {
+      variant: "default",
+      appearance: "solid",
+      size: "md",
+    },
+  }
+)
+
+export type InputProps = Omit<React.ComponentProps<"input">, "size"> &
+  VariantProps<typeof inputVariants>
+
+function Input({
+  className,
+  type,
+  size,
+  variant,
+  appearance,
+  ...props
+}: InputProps) {
   return (
     <input
       type={type}
       data-slot="input"
-      className={cn(
-        "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
-        className
-      )}
+      className={cn(inputVariants({ size, variant, appearance }), className)}
       {...props}
     />
   )
 }
 
-export { Input }
+export { Input, inputVariants }
