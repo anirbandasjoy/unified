@@ -12,7 +12,11 @@ import {
   CommandItem,
   CommandList,
 } from "@workspace/ui/components/command"
-import { Dialog, DialogContent } from "@workspace/ui/components/dialog"
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@workspace/ui/components/dialog"
 import { Button } from "@workspace/ui/components/button"
 
 export function CommandPalette() {
@@ -57,6 +61,7 @@ export function CommandPalette() {
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="overflow-hidden p-0">
+          <DialogTitle className="sr-only">Command Palette</DialogTitle>
           <Command className="**:data-cmdk-group:px-2 **:data-cmdk-group-heading:px-3 **:data-cmdk-group-heading:font-medium **:data-cmdk-group-heading:text-muted-foreground">
             <CommandInput placeholder="Type a command or search..." />
             <CommandList className="custom-scrollbar max-h-75 overflow-y-auto">
