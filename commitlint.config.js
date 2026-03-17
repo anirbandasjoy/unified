@@ -22,5 +22,6 @@ module.exports = {
     "type-empty": [2, "never"],
     "subject-empty": [2, "never"],
     "subject-case": [2, "never", ["sentence-case"]],
+    "header-max-length": [2, "always", 100],
   },
 }
