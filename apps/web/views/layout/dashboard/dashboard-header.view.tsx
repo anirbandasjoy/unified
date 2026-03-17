@@ -13,9 +13,11 @@ import {
 } from "@workspace/ui/components/breadcrumb"
 import { usePathname } from "next/navigation"
 import { Button } from "@workspace/ui/components/button"
-import { LogOut, Moon, Sun } from "lucide-react"
+import { IterationCcw, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { CommandPalette } from "@/views/layout/dashboard/components/command-palette"
+import Link from "next/link"
+import { LogoutConfirm } from "@/views/components/shared/logout-confirm"
 
 export function DashboardHeader() {
   const pathname = usePathname()
@@ -38,11 +40,6 @@ export function DashboardHeader() {
   }
 
   const breadcrumbItems = getBreadcrumbItems()
-
-  const handleLogout = () => {
-    // Add your logout logic here
-    console.log("Logout clicked")
-  }
 
   return (
     <header className="flex h-16 shrink-0 items-center justify-between border-b border-border px-4">
@@ -86,15 +83,14 @@ export function DashboardHeader() {
             <span className="sr-only">Toggle theme</span>
           </Button>
         )}
-        <Button
-          variant="default"
-          appearance="ghost"
-          size="icon-sm"
-          onClick={handleLogout}
-        >
-          <LogOut className="size-4" />
-          <span className="sr-only">Logout</span>
-        </Button>
+
+        <LogoutConfirm />
+        <Link href="/" className="hidden sm:block">
+          <Button appearance="fade" variant="secondary">
+            <IterationCcw size={28} strokeWidth={3} />
+            <span>Go Home</span>
+          </Button>
+        </Link>
       </div>
     </header>
   )

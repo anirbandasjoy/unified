@@ -18,6 +18,7 @@ import {
 } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@workspace/ui/components/button"
+import Link from "next/link"
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme()
@@ -173,15 +174,15 @@ function Hero() {
             className="min-w-40"
             asChild
           >
-            <a
-              href="https://github.com"
+            <Link
+              href="https://github.com/anirbandasjoy/unified"
               target="_blank"
               rel="noopener noreferrer"
             >
               <GitHubIcon className="mr-2 size-4" />
               Get Started
               <ChevronRight className="ml-2 size-4" />
-            </a>
+            </Link>
           </Button>
           <Button
             variant="default"
@@ -190,7 +191,7 @@ function Hero() {
             className="min-w-40"
             asChild
           >
-            <a href="#setup">View Docs</a>
+            <Link href="/dashboard">Dashboard</Link>
           </Button>
         </div>
         <p className="mt-6 text-sm text-muted-foreground">
@@ -336,8 +337,7 @@ function QuickStart() {
               </div>
               <div className="overflow-hidden rounded-lg bg-muted p-4">
                 <code className="text-sm text-foreground">
-                  git clone
-                  https://github.com/yourusername/mono-repo-template.git
+                  git clone https://github.com/anirbandasjoy/unified.git
                 </code>
               </div>
             </div>
