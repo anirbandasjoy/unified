@@ -25,44 +25,6 @@ export const statCardData = [
   },
 ] as const
 
-export const mockUsers = [
-  {
-    id: "1",
-    name: "John Doe",
-    email: "john@example.com",
-    role: "Admin",
-    status: "active" as const,
-  },
-  {
-    id: "2",
-    name: "Jane Smith",
-    email: "jane@example.com",
-    role: "User",
-    status: "active" as const,
-  },
-  {
-    id: "3",
-    name: "Bob Johnson",
-    email: "bob@example.com",
-    role: "User",
-    status: "inactive" as const,
-  },
-  {
-    id: "4",
-    name: "Alice Williams",
-    email: "alice@example.com",
-    role: "Editor",
-    status: "active" as const,
-  },
-  {
-    id: "5",
-    name: "Charlie Brown",
-    email: "charlie@example.com",
-    role: "User",
-    status: "inactive" as const,
-  },
-] as const
-
 export const analyticsData = [
   {
     title: "Page Views",
@@ -85,3 +47,22 @@ export const analyticsData = [
     trend: { value: 8, isPositive: true },
   },
 ] as const
+
+type User = {
+  id: string
+  name: string
+  email: string
+  role: "Admin" | "User" | "Editor"
+  status: "active" | "inactive"
+}
+
+const roles = ["Admin", "User", "Editor"] as const
+const statuses = ["active", "inactive"] as const
+
+export const mockUsers: User[] = Array.from({ length: 100 }, (_, i) => ({
+  id: String(i + 1),
+  name: `User ${i + 1}`,
+  email: `user${i + 1}@example.com`,
+  role: roles[i % roles.length]!,
+  status: statuses[i % statuses.length]!,
+}))

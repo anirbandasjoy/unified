@@ -1,7 +1,7 @@
 "use client"
 
 import { DataTable } from "@/views/layout/dashboard/components/data-table"
-import { getUserColumns } from "@/views/layout/dashboard/components/user-table-columns"
+import { getUserColumns } from "@/views/layout/dashboard/users/components/user-table-columns"
 import { UserCard } from "./user-card.view"
 
 interface User {

@@ -1,8 +1,8 @@
 import { StatCard } from "@/views/layout/dashboard/components/stat-card"
 import { analyticsData } from "@/lib/dashboard/constants"
 import { BarChart3, LineChart, PieChart, TrendingUp } from "lucide-react"
-import { AnalyticsChartsSection } from "@/views/layout/dashboard/components/analytics-charts-section"
-import { PerformanceMetricsSection } from "@/views/layout/dashboard/components/performance-metrics-section"
+import { AnalyticsChartsSection } from "@/views/layout/dashboard/analytics/components/analytics-charts-section"
+import { PerformanceMetricsSection } from "@/views/layout/dashboard/analytics/components/performance-metrics-section"
 
 export function AnalyticsView() {
   return (
