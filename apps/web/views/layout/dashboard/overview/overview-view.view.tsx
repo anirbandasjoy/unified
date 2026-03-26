@@ -1,8 +1,8 @@
 import { StatCard } from "@/views/layout/dashboard/components/stat-card"
 import { statCardData } from "@/lib/dashboard/constants"
 import { Activity, ArrowUpRight, DollarSign, Users } from "lucide-react"
-import { MetricsSection } from "@/views/layout/dashboard/components/metrics-section"
-import { ActivitySection } from "@/views/layout/dashboard/components/activity-section"
+import { MetricsSection } from "@/views/layout/dashboard/overview/components/metrics-section"
+import { ActivitySection } from "@/views/layout/dashboard/overview/components/activity-section"
 import {
   Card,
   CardDescription,
